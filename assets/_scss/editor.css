@@ -41,3 +41,31 @@ $md-min: 768px;
 .editor-styles-wrapper .btn-branch {
   float: right;
 }
+.editor-styles-wrapper .footer-wrapepr {
+  padding: 60px 0 80px;
+}
+.editor-styles-wrapper .footer-wrapepr .footer-logo {
+  width: 160px;
+  height: 32px;
+}
+.editor-styles-wrapper .footer-wrapepr .footer-sns-wrapper {
+  justify-content: center;
+  margin-bottom: 60px;
+}
+.editor-styles-wrapper .footer-wrapepr .footer-sitemap-wrapper {
+  justify-content: center;
+  margin-bottom: 60px;
+}
+.editor-styles-wrapper .footer-wrapepr .footer-sitemap-wrapper .footer-sitemap-item {
+  border-right: 1px solid #ffffff;
+}
+.editor-styles-wrapper .footer-wrapepr .footer-privacy-wrapper {
+  justify-content: space-between;
+  width: 757px;
+  margin: 0 auto 120px;
+  padding: 32px 40px;
+  background: rgba(255, 255, 255, 0.2);
+}
+.editor-styles-wrapper .footer-wrapepr .footer-privacy-wrapper .footer-privacy-item {
+  width: 360px;
+}

@@ -373,6 +373,10 @@ p {
     padding-top: 40px;
 }
 
+.pd-t60 {
+    padding-top: 60px;
+}
+
 .pd-t80 {
     padding-top: 80px;
 }
@@ -417,6 +421,10 @@ p {
     padding-bottom: 40px;
 }
 
+.pd-b60 {
+    padding-bottom: 60px;
+}
+
 .pd-b80 {
     padding-bottom: 80px;
 }
@@ -431,6 +439,10 @@ p {
 
 .pd-b140 {
     padding-bottom: 140px;
+}
+
+.pd-b160 {
+    padding-bottom: 160px;
 }
 
 .pd-l4 {
@@ -574,7 +586,94 @@ p {
     color: #FFFFFF;
 }
 
-.button span::after {
-    content: "→";
-    margin-left: 8px;
+.button span::after{
+	content: "→";
+	margin-left: 8px;
+}
+
+/* 支店一覧*/
+/* PC */
+.tablist-branch {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style-type: none;
+    margin: 60px auto;
+}
+
+.tablist-branch .tablist-item-branch {
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.tablist-branch .tablist-item-branch:last-child {
+    border-right: none;
+}
+
+.tablist-item-branch:hover a {
+    color: #83CCD2;
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+.list-branch .list-item-branch {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px 80px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+}
+
+.btn-branch {
+    float: right;
+}
+
+/* ブログ一覧仕様調整 */
+/* PC */
+.vk_post_imgOuter_singleTermLabel {
+	left: 0;
+	right: unset;
+	font-size: 12px;
+	padding: 10px;
+}
+
+.main-section>.vk_posts>.vk_post-col-lg-12 .vk_post_title {
+	word-break: break-word;
+}
+
+.vk_post .media-img {
+	width: 300px;
+}
+
+.vk_post_wrapper {
+	width: 100%;
+}
+
+.vk_post_wrapper .vk_post .media {
+	align-items: center;
+}
+
+.vk_post_wrapper .vk_post .media-img {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+}
+
+.vk_post_wrapper .vk_post .media-img {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+}
+
+.vk_post_wrapper .vk_post .vk_post_title {
+	overflow: hidden;
+}
+
+.vk_post_wrapper .vk_post .vk_post_title a {
+	font-weight: normal;
+	/* display: -webkit-box; */
+	/* -webkit-box-orient: vertical; */
+	/* -webkit-line-clamp: 2; */
+}
+
+.vk_post_title_new {
+	color: #83CCD2;
 }
