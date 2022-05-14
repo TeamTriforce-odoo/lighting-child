@@ -44,3 +44,28 @@ if ( $my_lightning_additional_css ) {
 /************************************************
  * 独自の処理を必要に応じて書き足します
  */
+
+/*---------------------------------------------------------------------------
+ * クラスの読み込み
+ *---------------------------------------------------------------------------*/
+if (file_exists($f = __DIR__ . '/lib/contact_form.php')) require_once($f);
+
+/*---------------------------------------------------------------------------
+ * JS読み込み
+ *---------------------------------------------------------------------------*/
+function add_scripts_js()
+{
+	wp_enqueue_script('ajaxzip3-js', get_theme_file_uri() . '/assets/js/ajaxzip3.js', array('jquery', 'jquery-form'), filemtime(__DIR__ . '/assets/js/ajaxzip3.js'), true);
+	wp_enqueue_script('wpcf7c-scripts-js', get_theme_file_uri() . '/assets/js/wpcf7c-scripts.js', array('jquery', 'jquery-form'), filemtime(__DIR__ . '/assets/js/wpcf7c-scripts.js'), true);
+}
+add_action('wp_enqueue_scripts', 'add_scripts_js', 100);
+
+/*---------------------------------------------------------------------------
+ * CSS読み込み  
+ *---------------------------------------------------------------------------*/
+// function add_scripts_css()
+// {
+// 	wp_enqueue_style('app-style', get_theme_file_uri('/app.css'), [], filemtime(__DIR__ . '/app.css'));
+// }
+// add_action('init', 'add_scripts_css', 10);
+

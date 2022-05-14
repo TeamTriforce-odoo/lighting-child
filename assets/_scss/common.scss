@@ -1,0 +1,88 @@
+.leftAnime {
+    opacity: 0;
+    overflow: hidden;
+    display: block;
+}
+
+.leftAnimeInner {
+    display: block;
+}
+
+.slideAnimeLeftRight {
+    animation-name: slideTextX100;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 200ms;
+    opacity: 0;
+}
+
+@keyframes slideTextX100 {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.slideAnimeRightLeft {
+    animation-name: slideTextX-100;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 200ms;
+    opacity: 0;
+}
+
+
+@keyframes slideTextX-100 {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* 会社沿革 */
+.history-wrapper {
+    border-left: 3px dotted #D4B58A;
+    padding: 40px 0;
+    position: relative;
+    &::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: #D4B58A;
+        border-radius: 50%;
+        position: absolute;
+        left: -5px;
+        top: calc(50% - 28px);
+        z-index: 10;
+    }
+    .history-line {
+        width: 100%;
+        height: 1px;
+        background: #ccc;
+        position: absolute;
+        left: 0;
+        top: 11px;
+        z-index: 1;
+    }
+    .tx-history {
+        margin-left: 60px;
+        padding: 0 20px;
+        position: relative;
+        z-index: 10;
+        background: #fff;
+    }
+    .tx-history-info {
+        display: block;
+        margin: 24px 0 0 80px;
+    }
+}

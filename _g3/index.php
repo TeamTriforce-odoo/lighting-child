@@ -57,7 +57,9 @@ if ( is_front_page() ) {
 
 <div class="<?php lightning_the_class_name( 'site-body' ); ?>">
 	<?php do_action( 'lightning_site_body_prepend', 'lightning_site_body_prepend' ); ?>
-	<div class="<?php lightning_the_class_name( 'site-body-container' ); ?> container">
+	
+
+	<div class="<?php lightning_the_class_name( 'site-body-container' ); ?> w-container">
 
 		<div class="<?php lightning_the_class_name( 'main-section' ); ?>" id="main" role="main">
 			<?php do_action( 'lightning_main_section_prepend', 'lightning_main_section_prepend' ); ?>

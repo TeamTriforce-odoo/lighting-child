@@ -26,34 +26,68 @@ $post_loop = new WP_Query(
 
 <?php if ( $post_loop->have_posts() ) : ?>
 
-<aside class="widget widget_link_list">
+<!-- <aside class="widget widget_link_list"> -->
 <!-- <h4 class="sub-section-title"><?php _e( 'Category', 'lightning' ); ?></h4> -->
-<h4 class="sub-section-title">
+<!-- <h4 class="sub-section-title">
 	<span class="sub-section-title-en">CATEGORY</span>
 	<span class="sub-section-title-jp">カテゴリー</span>
-</h4>	
+</h4>	 -->
 
+<!-- <ul> -->
+<!-- 	<?php
+	$args = array(
+		'show_count'      => true,
+		'title_li'      => '',
+	);
+	wp_list_categories( $args );
+	?> -->
+<!-- </ul>
+</aside> -->
+
+<aside class="widget widget_link_list">
+
+<h4 class="sub-section-title">
+	<span class="sub-section-title-en">SALON</span>
+	<span class="sub-section-title-jp">支店一覧</span>
+</h4>	
 <ul>
-	<?php wp_list_categories( 'title_li=' ); ?>
+	<span class="tagcloud">
+	<?php
+	$args = array(
+		'show_count'      => true,
+	);
+	wp_tag_cloud( $args );
+	?>
+	</span>
+
 </ul>
 </aside>
 
+
+
 <aside class="widget widget_link_list">
-<!-- <h4 class="sub-section-title"><?php _e( 'Archive', 'lightning' ); ?></h4> -->
 <h4 class="sub-section-title">
 	<span class="sub-section-title-en">ARCHIVE</span>
 	<span class="sub-section-title-jp">アーカイブ</span>
 </h4>
 	
 <ul>
-	<?php
+<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;">
+    <option value=""><?php esc_attr( _e( '月を選択', 'textdomain' ) ); ?></option> 
+    <?php wp_get_archives( array( 'type' => 'monthly', 'format' => 'option', 'show_post_count' => 1 ) ); ?>
+</select>
+	
+<!--<?php
 	$args = array(
 		'type'      => 'monthly',
 		'post_type' => 'post',
+		'show_post_count' => true,
 	);
 	wp_get_archives( $args );
-	?>
+	?>-->
 </ul>
+	
+	
 </aside>
 
 <aside class="widget widget_media">
@@ -78,7 +112,7 @@ $post_loop = new WP_Query(
 			'display_new'                => true,
 			'display_btn'                => false,
 			'image_default_url'          => true,
-			'overlay'                    => true,
+			'overlay'                    => false,
 			'btn_text'                   => __( 'Read more', 'lightning' ),
 			'btn_align'                  => 'text-right',
  			
@@ -96,5 +130,6 @@ endwhile;
 	</div>
 </div>
 </aside>
+<aside class="widget widget_media side-blank pd-b100"></aside>
 <?php endif; ?>
 <?php wp_reset_query(); ?>

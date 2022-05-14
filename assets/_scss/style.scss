@@ -591,6 +591,9 @@ p {
 	margin-left: 8px;
 }
 
+/* Page header */
+
+
 /* 支店一覧*/
 /* PC */
 .tablist-branch {
@@ -669,11 +672,15 @@ p {
 
 .vk_post_wrapper .vk_post .vk_post_title a {
 	font-weight: normal;
-	/* display: -webkit-box; */
-	/* -webkit-box-orient: vertical; */
-	/* -webkit-line-clamp: 2; */
+	display: -webkit-box;
+	 -webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
 }
 
 .vk_post_title_new {
 	color: #83CCD2;
+}
+
+.vk_post .vk_post_date {
+	color: #83ccd2;
 }
