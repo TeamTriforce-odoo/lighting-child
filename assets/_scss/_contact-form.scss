@@ -1,0 +1,98 @@
+.wpcf7-form {
+    // step bar
+    .form-step-area {
+        width: 100%;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+        ul.stepbar {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            padding: 0px;
+            gap: 30px;
+            li{
+                &.stepwrap {
+                    font-weight: 400;
+                    font-size: 20px;
+                    line-height: 23px;
+                    text-align: center;
+                    color: #ffffff;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 12px 18px;
+                    gap: 10px;
+            
+                    .step-square {
+                        width: 48px;
+                        height: 48px;
+                        line-height: 48px;
+                        background-color: #CCCCCC;
+                    }
+                    .step-text {
+                        width: 48px;
+                        height: 16px;
+                        font-size: 14px;
+                        line-height: 16px;
+                        text-align: center;
+                        color: rgba(0, 0, 0, 0.4);
+                    }
+                }
+                &#form-step-1 {
+                    .step-square {
+                        background: #83CCD2;
+                    }
+                }
+            }
+        }
+    }
+    div.hidden_text_area {
+        padding: 10px 15px;
+        font-weight: bold;
+        display: none;
+    }
+    .form-item{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+    button#adressSearch{
+        padding: 0.5em 1em;
+        background: transparent;
+        border-radius: 100px;
+        border: 1px solid #5DC1CF;
+        cursor: pointer;
+        font-size: 0.8rem;
+        display: block;
+        margin: 0 auto;
+        color: var(--vk-color-primary-dark);
+        background-color: #fff;
+        height: 60%;
+        margin-left: 1.5rem;
+        
+        &:hover {
+            background: #5DC1CF;
+            color: #FFFFFF;
+        }
+    }
+
+    // 確認画面
+    &.custom-wpcf7c-confirmed {
+        .form-step-area{
+            ul.stepbar {
+                li#form-step-1 {
+                    span.step-square {
+                        background-color: #CCCCCC;
+                    }
+                }
+                li#form-step-2 span.step-square {
+                    background-color: #83CCD2;
+                }
+            }
+        }
+        div.hidden_text_area {
+            display: flex;
+        }
+    }
+}

@@ -84,6 +84,44 @@ function wpcf7_brithday_select()
 }
 wpcf7_add_form_tag(['birthday_select'], 'wpcf7_brithday_select', ['name-attr' => true]);
 
+/*---------------------------------------------------------------------------
+ * お問い合わせ画面のフォームバリデーション
+ *---------------------------------------------------------------------------*/
+function wpcf7_validate_customize_contact($result, $tags)
+{
+    if (!in_array($_POST['mode'], array('contact'), true)) {
+        return $result;
+    }
+
+    // 確認用メールアドレスの整合性チェック
+    if ($result->is_valid('user_email_confirm') && ($_POST['user_email'] !== $_POST['user_email_confirm'])) {
+        $result->invalidate('user_email_confirm', '入力されたメールアドレスが異なっています。');
+    }
+
+    // お名前カナのチェック
+    if (!preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-first-name-kana'])) || !preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-last-name-kana']))) {
+        $result->invalidate('your-last-name-kana', '全角カタカナで入力してください。');
+    }
+
+    // 郵便番号
+    if ($result->is_valid('your-zip') && !preg_match('/^\d{7}$/', strval($_POST['your-zip']))) {
+        $result->invalidate('your-zip', '7桁半角数字で入力して下さい。');
+    }
+
+    // 市区町村
+    if ($result->is_valid('your-address') && strlen($_POST['your-address']) == 0 ) {
+        $result->invalidate('your-address', '正しい郵便番号を入力してください。');
+    }
+
+    // 電話番号のバリデーション
+    // if ($result->is_valid('your-phonenumber') && !preg_match('/^\d{2,4}-\d{2,4}-\d{3,4}$/', strval($_POST['your-phonenumber']))) {
+    //     $result->invalidate('your-phonenumber', '電話番号に間違いがあります。ハイフン（-）付き半角数字で入力して下さい。');
+    // }
+
+    return $result;
+}
+add_filter('wpcf7_validate', 'wpcf7_validate_customize_contact', 11, 2);
+
 
 
 /*---------------------------------------------------------------------------

@@ -64,11 +64,11 @@ add_action('wp_enqueue_scripts', 'add_scripts_js', 100);
 /*---------------------------------------------------------------------------
  * CSS読み込み  
  *---------------------------------------------------------------------------*/
-// function add_scripts_css()
-// {
-// 	wp_enqueue_style('app-style', get_theme_file_uri('/app.css'), [], filemtime(__DIR__ . '/app.css'));
-// }
-// add_action('init', 'add_scripts_css', 10);
+function add_scripts_css()
+{
+	wp_enqueue_style('app-style', get_theme_file_uri('/assets/css/contact-form.css'), [], filemtime(__DIR__ . '/assets/css/contact-form.css'));
+}
+add_action('init', 'add_scripts_css', 10);
 
 /*---------------------------------------------------------------------------
  * 更新日時順に呼び出しを変更（ログイン中は除く）

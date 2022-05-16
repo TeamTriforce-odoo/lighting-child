@@ -6,7 +6,7 @@
 @import "variables";
 // for gutenberg
 .editor-styles-wrapper{
-    @import "common";
+    @import "_common";
     // ↓ 編集画面でのみ効かせたいCSS
 
     // ↑ 編集画面でのみ効かせたいCSS
