@@ -57,6 +57,7 @@ function add_scripts_js()
 {
 	wp_enqueue_script('ajaxzip3-js', get_theme_file_uri() . '/assets/js/ajaxzip3.js', array('jquery', 'jquery-form'), filemtime(__DIR__ . '/assets/js/ajaxzip3.js'), true);
 	wp_enqueue_script('wpcf7c-scripts-js', get_theme_file_uri() . '/assets/js/wpcf7c-scripts.js', array('jquery', 'jquery-form'), filemtime(__DIR__ . '/assets/js/wpcf7c-scripts.js'), true);
+	wp_enqueue_script('base-js', get_theme_file_uri() . '/assets/js/base.js', array('jquery', 'jquery-form'), filemtime(__DIR__ . '/assets/js/base.js'), true);
 }
 add_action('wp_enqueue_scripts', 'add_scripts_js', 100);
 
@@ -69,3 +70,22 @@ add_action('wp_enqueue_scripts', 'add_scripts_js', 100);
 // }
 // add_action('init', 'add_scripts_css', 10);
 
+/*---------------------------------------------------------------------------
+ * 更新日時順に呼び出しを変更（ログイン中は除く）
+ *---------------------------------------------------------------------------*/
+function my_sort_order_by_modifired($query)
+{
+	if (!is_admin() && $query->is_main_query()) {
+		$query->set('orderby', 'modified');
+	}
+}
+add_action('pre_get_posts', 'my_sort_order_by_modifired');
+
+/*---------------------------------------------------------------------------
+ * add menu to slider
+ *---------------------------------------------------------------------------*/
+function register_my_menu()
+{
+	register_nav_menus(array('slide-fixed-nav' => 'Slide Fixed Navigation'));
+}
+add_action('init', 'register_my_menu');
