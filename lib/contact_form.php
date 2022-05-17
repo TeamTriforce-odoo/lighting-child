@@ -66,6 +66,9 @@ function wpcf7_brithday_select()
     $end_year = date("Y", strtotime("-18 year")); // 18歳から
     for ($i = $start_year; $i <= $end_year; $i++) {
         $year_list[] = $i;
+        if(count($year_list) == 40){
+            $default_year = $i;
+        }
     }
     $year_value = implode(' ', preg_replace("/^(.*?)$/", '"$1"', $year_list));
     for ($i = 1; $i <= 12; $i++) {
@@ -77,9 +80,9 @@ function wpcf7_brithday_select()
     }
     $day_value = implode(' ', preg_replace("/^(.*?)$/", '"$1"', $day_list));
 
-    $shortcode = "[select* birth_year class:birth_text include_blank default:61 $year_value ]年" .
-        "[select* birth_month  include_blank class:birth_text $month_value]月" .
-        "[select* birth_day include_blank  class:birth_text $day_value]日";
+    $shortcode = "<div class='select-btn'>[select* birth_year class:birth_text include_blank default:$default_year $year_value ]</div>年" .
+        "<div class='select-btn'>[select* birth_month  include_blank class:birth_text $month_value]</div>月" .
+        "<div class='select-btn'>[select* birth_day include_blank  class:birth_text $day_value]</div>日";
     return $obj->do_shortcode($shortcode);
 }
 wpcf7_add_form_tag(['birthday_select'], 'wpcf7_brithday_select', ['name-attr' => true]);
@@ -99,7 +102,10 @@ function wpcf7_validate_customize_contact($result, $tags)
     }
 
     // お名前カナのチェック
-    if (!preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-first-name-kana'])) || !preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-last-name-kana']))) {
+    if (!preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-first-name-kana']))) {
+        $result->invalidate('your-first-name-kana', '全角カタカナで入力してください。');
+    }
+    if (!preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-last-name-kana']))) {
         $result->invalidate('your-last-name-kana', '全角カタカナで入力してください。');
     }
 
@@ -121,6 +127,42 @@ function wpcf7_validate_customize_contact($result, $tags)
     return $result;
 }
 add_filter('wpcf7_validate', 'wpcf7_validate_customize_contact', 11, 2);
+
+/*---------------------------------------------------------------------------
+ * お問い合わせ画面のフォームバリデーション
+ *---------------------------------------------------------------------------*/
+function wpcf7_validate_customize_catalog($result, $tags)
+{
+    if (!in_array($_POST['mode'], array('catalog'), true)) {
+        return $result;
+    }
+
+    // 確認用メールアドレスの整合性チェック
+    if ($result->is_valid('user_email_confirm') && ($_POST['user_email'] !== $_POST['user_email_confirm'])) {
+        $result->invalidate('user_email_confirm', '入力されたメールアドレスが異なっています。');
+    }
+
+    // お名前カナのチェック
+    if (!preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-first-name-kana']))) {
+        $result->invalidate('your-first-name-kana', '全角カタカナで入力してください。');
+    }
+    if (!preg_match("/\A[ァ-ヿ]+\z/u", strval($_POST['your-last-name-kana']))) {
+        $result->invalidate('your-last-name-kana', '全角カタカナで入力してください。');
+    }
+
+    // 郵便番号
+    if ($result->is_valid('your-zip') && !preg_match('/^\d{7}$/', strval($_POST['your-zip']))) {
+        $result->invalidate('your-zip', '7桁半角数字で入力して下さい。');
+    }
+
+    // 市区町村
+    if ($result->is_valid('your-address') && strlen($_POST['your-address']) == 0) {
+        $result->invalidate('your-address', '正しい郵便番号を入力してください。');
+    }
+
+    return $result;
+}
+add_filter('wpcf7_validate', 'wpcf7_validate_customize_catalog', 11, 2);
 
 
 

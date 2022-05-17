@@ -100,6 +100,7 @@ if (is_front_page()) {
     </div><!-- [ /.site-body-container ] -->
 
     <?php do_action('lightning_site_body_append', 'lightning_site_body_append'); ?>
+    <?php lightning_get_template_part('template-parts/slider-fixed-menu'); ?>
 
 </div><!-- [ /.site-body ] -->
 

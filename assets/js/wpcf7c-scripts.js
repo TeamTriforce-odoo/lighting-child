@@ -95,17 +95,5 @@ wpcf7c_scroll = function(unit_tag) {
                 }[match]
             });
         }
-        var textareaTag = $('textarea');
-        textareaTag.each(function () {
-            $(this).on('input', function () {
-                var strVal = getFormatTextareaValue(escapeHtml(this.value));
-                var name = $(this).attr('name');
-                var hidden_text_class = 'hidden_text_area_' + name;
-                var $hidden_text = $('<div class="hidden_text_area ' + hidden_text_class + ' wpcf7c-elm-step2"></div>');
-                $('.' + hidden_text_class).remove();
-                $hidden_text.html(strVal);
-                $(this).after($hidden_text);
-            });
-        })
     });
 }(jQuery);

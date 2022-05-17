@@ -55,11 +55,11 @@ if (is_search()) {
     $term = get_queried_object();
     $page_header_image = get_field('category_cover_img', $term);;
     $title_jp = get_field('category_title_jp', $term);
-    $page_header_title = $title_jp == '' ? $category[0]->name : $title_jp ;
+    $page_header_title = $title_jp == '' ? $category[0]->name : $title_jp;
     $title_en = get_field('category_title_en', $term);
     $page_header_title_en = $title_en;
 } elseif (is_tax() || is_home() || is_author()) {
-    
+
     // Case of post type == 'post'.
     if ('post' === $post_type_info['slug']) {
         // Case of use post top page.
@@ -82,16 +82,16 @@ if (is_search()) {
             } else {
                 $page_header_title = get_the_archive_title();
             }
-        } 
+        }
         // Case of custom post type.
     } else {
         $page_header_title = $post_type_info['name'];
     }
 } elseif (is_page() || is_attachment()) {
-    $page_header_title = get_field('page_title_jp') == ''?  get_the_title() : get_field('page_title_jp');
+    $page_header_title = get_field('page_title_jp') == '' ?  get_the_title() : get_field('page_title_jp');
     $page_header_image = get_field('page_cover_img');
     $page_header_title_en = get_field('page_title_en');
-}else if(is_single() || is_archive() || is_tag()) {
+} else if (is_single() || is_archive() || is_tag()) {
     $page_header_title = "お役立ち情報";
     $page_header_image = "/wp-content/uploads/category_cover.jpg";
     $page_header_title_en = "MARRIAGE KNOWLEDGE";
@@ -128,8 +128,8 @@ $allowed_html = array(
 ?>
 <section class="header-wrapper pd-t140 pd-b140 mg-b60" style="background-image: url('<?php echo $page_header_image; ?>'); background-position: center center; background-size: cover;">
     <h1 class="center">
-        <p class="tx-32 tx-darkgray lighter ls-2 tx-header normal mg-b60"><?php echo $page_header_title_en; ?></p>
-        <p class="tx-18 tx-darkgray lighter letter-spacing20"><?php echo $page_header_title; ?></p>
+        <p class="tx-32 tx-darkgray lighter ls-2 tx-header normal mg-b60"><?php echo $page_header_title; ?></p>
+        <p class="tx-18 tx-darkgray lighter letter-spacing20"><?php echo $page_header_title_en; ?></p>
     </h1>
 </section>
 

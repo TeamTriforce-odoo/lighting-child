@@ -1,3 +1,8 @@
+.c-container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 0 40px;
+}
 .wpcf7-form {
     // step bar
     .form-step-area {
@@ -57,7 +62,7 @@
         align-items: center;
         flex-direction: row;
     }
-    button#adressSearch{
+    button#addressSearch{
         padding: 0.5em 1em;
         background: transparent;
         border-radius: 100px;
@@ -76,7 +81,224 @@
             color: #FFFFFF;
         }
     }
+    .select-btn {
+        overflow: hidden;
+        text-align: center;
+        position: relative;
+        background: #f7f7f7;
+        font-size: 18px;
+        color: #333;
+        padding-right: 0.2em;
+        margin-right: 10px;
+        select {
+            width: 100%;
+            padding: 20px;
+            cursor: pointer;
+            text-indent: 0.01px;
+            text-overflow: ellipsis;
+            border: none;
+            outline: none;
+            background: transparent;
+            background-image: none;
+            box-shadow: none;
+            -webkit-appearance: none;
+            appearance: none;
+            &::-ms-expand {
+                display: none;
+            }
+        }
+        &::before {
+            position: absolute;
+            top: 1.5em;
+            right: 0.5em;
+            width: 0;
+            height: 0;
+            padding: 0;
+            content: '';
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #777;
+            pointer-events: none;
+        }
+    }
+    
+    .form-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+    
+    .tx-form {
+        font-size: 18px;
+        letter-spacing: 0.1em;
+        width: 240px;
+    }
+    
+    .tag-form {
+        font-size: 18px;
+        color: #FFB198;
+        margin-left: 8px;
+    }
+    .tx-form-content {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .tx-tips-form {
+        font-size: 0.8em;
+        letter-spacing: 0.1em;
+        display: block;
+        color: #999;
+        width: 100%;
+    }
+    
+    .wpcf7-form-control-wrap {
+        display: inline-block;
+        box-sizing: border-box;
+    }
+    
+    .wpcf7-list-item-label {
+        font-size: 18px;
+        color: #333;
+    }
+    
+    .your-first-name, .your-first-name-kana {
+        margin-right: 30px;
+    }
+    
+    .your-message {
+        width: 680px;
+    }
+    .your-address, 
+    .your-address-detail{
+        input[type=text] {
+            max-width: 600px;
+        }
+    }
+    
+    .acceptance-560 {
+        margin-bottom: 60px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        letter-spacing: 0.1em;
+    }
+    
+    input[type=text] {
+        max-width: 320px;
+    }
 
+    input[type=date],
+    input[type=email],
+    input[type=number],
+    input[type=password],
+    input[type=tel],
+    input[type=text],
+    input[type=url],
+    select,
+    textarea {
+        font-size: 1rem;
+        color: #333;
+        border: none;
+        background: #f7f7f7;
+        border-radius: 0;
+    }
+    
+    input[type=date],
+    input[type=email],
+    input[type=number],
+    input[type=password],
+    input[type=tel],
+    input[type=text],
+    input[type=url],
+    select,
+    textarea {
+        padding: 20px;
+        margin-bottom: 0;
+    }
+    
+    input[type=submit] {
+        padding: 16px 64px;
+        background: transparent;
+        border-radius: 100px;
+        border: 1px solid #5DC1CF;
+        color: #5DC1CF;
+        cursor: pointer;
+        font-size: 18px;
+        display: block;
+        margin: 0 auto;
+    }
+    .wpcf7-form-control-wrap{
+        display: block;
+        .wpcf7-radio {
+            display: flex;
+        }
+    } 
+    span.wpcf7-list-item {
+        position: relative;
+        width: 100%;
+        flex-basis: content;
+        &.first{
+            margin: 0 !important
+        }
+    }
+    .wpcf7-list-item-label {
+        color: #333;
+        cursor: pointer;
+        font-size: 1rem;
+        &::before{
+            content: '';
+            background: #fff;
+            border-radius: 100%;
+            border: 1px solid #888888;
+            display: inline-block;
+            width: 1.4em;
+            height: 1.4em;
+            position: relative;
+            top: -0.2em;
+            margin-right: 14px;
+            vertical-align: middle;
+            cursor: pointer;
+            text-align: center;
+            -webkit-transition: all 250ms ease;
+            transition: all 250ms ease;
+        }
+    } 
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+    }
+    input[type="radio"]:checked+.wpcf7-list-item-label:before {
+        background-color: rgba(131, 204, 210, 1);
+        box-shadow: inset 0 0 0 2px #fff;
+    } 
+    .wpcf7-acceptance {
+        .wpcf7-list-item-label {
+            &::before {
+                content: none;
+            }
+        }
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
+    }
+    .wpcf7c-btn-back {
+        padding: 16px 64px;
+        background: transparent;
+        border-radius: 100px;
+        border: 1px solid rgba(212, 181, 138);
+        color: rgba(212, 181, 138);
+        cursor: pointer;
+        font-size: 18px;
+        display: block;
+        margin: 0 auto;
+    }
+        
     // 確認画面
     &.custom-wpcf7c-confirmed {
         .form-step-area{
@@ -94,5 +316,66 @@
         div.hidden_text_area {
             display: flex;
         }
+        select.wpcf7c-conf,input.wpcf7c-conf {
+            border: none;
+            font-weight: bold;
+            opacity: 1;
+        }
+        select.wpcf7c-conf {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+        .select-btn {
+            background: #ddd;
+            &::before {
+                content: none;
+            }
+        }
+        input[type=text],textarea {
+            background: #ddd;
+        }
+        input:-internal-autofill-selected {
+            background-color: #ddd;
+        }
+        input[type="radio"]:checked~.wpcf7-list-item-label:before {
+            background-color: #ddd!important;
+            box-shadow: inset 0 0 0 2px #fff;
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #ddd inset !important;
+        }
+        button#addressSearch {
+            display: none;
+        }
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .c-container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 0 40px;
+    }
+}
+
+@media screen and (min-width:960px) and (max-width:1199px) {
+    .c-container {
+        width: 100%;
+        padding: 0 40px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+}
+
+@media screen and (max-width:959px) {
+    .c-container {
+        width: 100%;
+        padding: 0 2.67vw;
+        margin: 0 auto;
+        overflow: hidden;
     }
 }
